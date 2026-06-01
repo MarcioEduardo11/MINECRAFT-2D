@@ -51,10 +51,28 @@ int main() {
     cout << "3. Construcao (8 pedras e 4 arvores)" << endl;
     cin >> objetivo;
 
+    int dificuldade;
+
+     cout << "Escolha a dificuldade:" <<endl;
+     cout << "1. Facil (5 vidas)" << endl;
+     cout << "2. Medio (3 vidas)" << endl;
+     cout << "3. Dificil (1 vida)" << endl;
+     cin >> dificuldade;
+
+    int vidas;
+
+    if (dificuldade == 1) {
+        vidas = 5;
+    } else if (dificuldade == 2) {
+        vidas = 3;
+    } else {
+        vidas = 1;
+    }
 
     while (jogando) {
 
-        cout << "INVENTÁRIO: ";
+        cout << "INVENTARIO: ";
+        cout << "Vidas: " << vidas << " ";
         cout << "Gravetos: " << gravetos << "";
         cout << "Pedras: " << pedras << " ";
         cout << "Frutas: " << frutas << " ";
@@ -94,6 +112,9 @@ int main() {
         if (itemEncontrado == 'F') frutas++;
         if (itemEncontrado == 'A') animais++;
         if (itemEncontrado == 'V') arvores++;
+    }else {
+        vidas--;
+        cout << "Você perdeu uma vida! Vidas restantes: " << vidas << endl;
     }
     mapa[JogadorLinha] [JogadorColuna] = '@';
 
