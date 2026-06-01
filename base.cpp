@@ -71,13 +71,7 @@ int main() {
 
     while (jogando) {
 
-        cout << "INVENTARIO: ";
-        cout << "Vidas: " << vidas << " ";
-        cout << "Gravetos: " << gravetos << "";
-        cout << "Pedras: " << pedras << " ";
-        cout << "Frutas: " << frutas << " ";
-        cout << "Animais: " << animais << " ";
-        cout << "Árvores: " << arvores << endl;
+        cout << "INVENTARIO: Vidas= " << vidas << " | Gravetos= " << gravetos << " | Pedras= " << pedras << " | Frutas= " << frutas << " | Animais= " << animais << " | Arvores= " << arvores << endl;
 
         for (int i = 0; i < linhas; i++) {
             for (int j = 0; j < colunas; j++) {
@@ -103,7 +97,7 @@ int main() {
     else if (itemEncontrado == 'P') cout << "Você encontrou uma pedra! Coletar? (s/n)" << endl;
     else if (itemEncontrado == 'F') cout << "Você encontrou uma fruta! Coletar? (s/n)" << endl;
     else if (itemEncontrado == 'A') cout << "Você encontrou um animal! Coletar? (s/n)" << endl;
-    else if (itemEncontrado == 'V') cout << "Você encontrou uma árvore! Coletar? (s/n)" << endl;
+    else if (itemEncontrado == 'V') cout << "Você encontrou uma arvore! Coletar? (s/n)" << endl;
     cin >> resposta;
 
     if (resposta == 's') {
@@ -114,7 +108,7 @@ int main() {
         if (itemEncontrado == 'V') arvores++;
     }else {
         vidas--;
-        cout << "Você perdeu uma vida! Vidas restantes: " << vidas << endl;
+        cout << "Voce ignorou o item e perdeu uma vida! Vidas restantes: " << vidas << endl;
     }
     mapa[JogadorLinha] [JogadorColuna] = '@';
 
@@ -125,8 +119,15 @@ int main() {
     } else if (objetivo == 3 && pedras >= 8 && arvores >= 4) {
         jogando = false;
     }
+    if (vidas <= 0) {
+       jogando = false;
+    }
 }
-    cout << "Parabens! Voce alcancou seu objetivo!" << endl;
+    if (vidas <= 0) {
+        cout << "Game Over! Você perdeu todas as suas vidas." << endl;
+    } else {
+        cout << "Parabens! Voce alcançou seu objetivo!" << endl;
+    }
 
     for (int i =0; i < linhas; i++) {
         for (int j = 0; j < colunas; j++) {
